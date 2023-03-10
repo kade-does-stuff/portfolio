@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import emailjs from '@emailjs/browser';
 
-import Map from './Map';
+// import Map from './Map';
 
 const Section = styled.div`
   height: 100vh;
@@ -85,7 +85,9 @@ const Contact = () => {
             {success && <span>Your message has been sent</span>}
           </Form>
         </Left>
-        <Right><Map/></Right>
+        <Right>
+          {/* <Map/> */}
+        </Right>
       </Container>
     </Section>
   )

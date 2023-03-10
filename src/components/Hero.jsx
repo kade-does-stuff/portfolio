@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import Navbar from './Navbar'
+import TypedText from './Typed'
 
 const Section = styled.div`
     height: 100vh;
@@ -79,24 +80,21 @@ const Img = styled.img`
 
 const Hero = () => {
     return (
-        <Section>
+        <div className='h-screen snap-center flex flex-col items-center justify-between'>
             <Navbar/>
-            <Container>
-                <Left>
-                    <Title>Think. Make. Solve.</Title>
-                    <WhatWeDo>
-                        <Line src="./img/line.png"/>
-                        <Subtitle>What we do</Subtitle>
-                    </WhatWeDo>
-                    <Desc>We enjoy creating delightful, human-centered digital experiences.</Desc>
+            <div className='h-full container flex'>
+                <div className='flex flex-1 flex-col justify-center gap-4'>
+                    <TypedText/>
+                    <h2 className='text-xl mt-2' style={{color: '#DA4EA2'}}>About me</h2>
+                    <p className='m-0 text-base text-gray-300'>Culpa laborum et fugiat duis fugiat. Ea culpa nisi laborum occaecat et aute adipisicing consectetur. Eu esse cillum fugiat eiusmod deserunt. Enim velit reprehenderit sint quis nisi veniam voluptate ipsum velit.</p>
                     <Button>Learn More</Button>
-                </Left>
-                <Right>
+                </div>
+                <div className='flex-auto relative'>
                     {/* 3D Model */}
                     <Img src="./img/moon.png"/>
-                </Right>
-            </Container>
-        </Section>
+                </div>
+            </div>
+        </div>
     )
 }
 

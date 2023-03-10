@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import MobileDesign from './MobileDesign';
+import './work.scss';
 
 const data = [
   "Web Design",
@@ -10,81 +10,84 @@ const data = [
   "Marketing"
 ];
 
-const Section = styled.div`
-  height: 100vh;
-  scroll-snap-align: center;
-  display: flex;
-  justify-content: center;
-`;
-const Container = styled.div`
-  width: 1400px;
-  display: flex;
-  justify-content: space-between;
-`;
-const Left = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const List = styled.ul`
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
-const ListItem = styled.li`
-  font-size: 90px;
-  font-weight: bold;
-  cursor: pointer;
-  color: transparent;
-  -webkit-text-stroke: 1px white;
-  position: relative;
-  @media only screen and (max-width: 768px) {
-    font-size: 24px;
-    color: white;
-    -webkit-text-stroke: 0px;
-  }
-  ::after {
-    content: "${(props) => props.text}";
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: white;
-    width: 0px;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-  &:hover {
-    ::after {
-      animation: slide 0.5s linear both;
-      @keyframes slide {
-        to {
-          width: 100%;
+const section = {
+  height: '100vh',
+  scrollSnapAlign: 'center',
+  display: 'flex',
+  justifyContent: 'center'
+};
+const container = {
+  width: '1400px',
+  display: 'flex',
+  justifyContent: 'space-between'
+};
+const left = {
+  flex: 1,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center'
+};
+const list = {
+  listStyle: 'none',
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '20px'
+};
+const listItem = {
+  fontSize: '90px',
+  fontWeight: 'bold',
+  cursor: 'pointer',
+  color: 'transparent',
+  WebkitTextStroke: '1px white',
+  position: 'relative',
+  '@media (maxWidth: 768px)': {
+    fontSize: '24px',
+    color: 'white',
+    WebkitTextStroke: '0px',
+  },
+  '::after': {
+    content: `${(props) => props.text}`,
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    color: 'white',
+    backgroundColor:"green",
+    width: '0px',
+    overflow: 'hidden',
+    whiteSpace: 'nowrap',
+  },
+  '&:hover': {
+    '::after': {
+      animation: 'slide 0.5s linear both',
+      color: 'white',
+      '@keyframes slide': {
+        'to': {
+          width: '100%'
         }
       }
     }
   }
-`;
-const Right = styled.div`
-  flex: 1;
-`;
+};
+
+const right = {
+  flex: 1
+};
 
 const Work = () => {
-  const [work, setWork] = useState("Web Design");
+  // const [work, setWork] = useState("Web Design");
     return (
-        <Section>
-          <Container>
-          <Left>
-            <List>
+        <div style={section}>
+          <div style={container}>
+          <div style={left}>
+            <ul style={list}>
               {data.map((item) => (
-                <ListItem key={item} text={item} onClick={() => setWork(item)}>
+                <li className='text-outline-hover' data key={item} data-text={item}>
                   {item}
-                </ListItem>
+                </li>
               ))}
-            </List>
-          </Left>
-          <Right>
+            </ul>
+          </div>
+          <div style={right}>
             <MobileDesign/>
             {/* {work === "Web Design" ? (
               <WebDesign />
@@ -93,9 +96,9 @@ const Work = () => {
             ) : (
               <ProductDesign />
             )} */}
-          </Right>
-          </Container>
-        </Section>
+          </div>
+          </div>
+        </div>
     )
 }
 
